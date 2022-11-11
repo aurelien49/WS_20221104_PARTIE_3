@@ -1,0 +1,107 @@
+{
+    "name": "Image Quiz",
+    "short_name": "DevCoffee",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color": "black",
+    "theme_color": "grey",
+    "orientation": "portrait-primary",
+    "description": "Application mobile pour la collecte de données sous forme d'un QCM. ",
+    "icons": [{
+            "src": "/images/personnalites/actors/bruce_lee.jpg",
+            "type": "image/png",
+            "sizes": "870x489"
+        },
+        {
+            "src": "/images/personnalites/actors/guillaume_canet.jpg",
+            "type": "image/png",
+            "sizes": "624x600"
+        },
+        {
+            "src": "/images/personnalites/actors/jean_reno.jpg",
+            "type": "image/png",
+            "sizes": "500x392"
+        },
+        {
+            "src": "/images/personnalites/actors/leonardo_dicaprio.jpg",
+            "type": "image/png",
+            "sizes": "728x1066"
+        },
+        {
+            "src": "/images/personnalites/politics/charle_michel.jpg",
+            "type": "image/png",
+            "sizes": "1004x669"
+        },
+        {
+            "src": "/images/personnalites/politics/jean_luc_melanchon.jpg",
+            "type": "image/png",
+            "sizes": "640x358"
+        },
+        {
+            "src": "/images/personnalites/politics/rodrigo_durete.jpg",
+            "type": "image/png",
+            "sizes": "275x183"
+        },
+        {
+            "src": "/images/personnalites/politics/segolene_royal.jpg",
+            "type": "image/png",
+            "sizes": "1000x751"
+        },
+        {
+            "src": "/images/personnalites/scientifics/albert_einstein.jpg",
+            "type": "image/png",
+            "sizes": "1140x641"
+        },
+        {
+            "src": "/images/personnalites/scientifics/galilee.jpg",
+            "type": "image/png",
+            "sizes": "1024x899"
+        },
+        {
+            "src": "/images/personnalites/scientifics/nicolas_tesla.jpg",
+            "type": "image/png",
+            "sizes": "1024x640"
+        },
+        {
+            "src": "/images/personnalites/scientifics/marie_curie.jpg",
+            "type": "image/png",
+            "sizes": "1024x539"
+        },
+        {
+            "src": "/images/quiz-128x128.png",
+            "type": "image/png",
+            "sizes": "128x128"
+        },
+        {
+            "src": "/images/quiz-192x192.png",
+            "type": "image/png",
+            "sizes": "192x192",
+            "purpose": "maskable"
+        },
+        {
+            "src": "/images/quiz-512x512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        },
+        {
+            "src": "/images/burger-39x32.png",
+            "type": "image/png",
+            "sizes": "39x32"
+        },
+        {
+            "src": "/images/left-arrow-22x23.png",
+            "type": "image/png",
+            "sizes": "22x23"
+        },
+        {
+            "src": "/images/home_picture.png",
+            "type": "image/png",
+            "sizes": "226x152"
+        }
+    ],
+    "prefer_related_applications": true,
+    "related_applications": [{
+        "platform": "play",
+        "id": "com.google.samples.apps.iosched"
+    }]
+}

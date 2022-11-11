@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="manifest" href="manifest.json" />
+    <!-- ios support -->
+    <link rel="apple-touch-icon" href="images/quiz-192x192.png" />
+    <meta name="apple-mobile-web-app-status-bar" content="#db4938" />
+    <meta name="theme-color" content="#db4938" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv=" X-UA-Compatible " content="ie=edge " />
+    <link rel="stylesheet " href="css/style.css " />
+    <title>Image Quiz</title>
+    <link rel="shortcut icon" href="images/favicon/Bluetooth.ico" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
+</head>
+
+<body onload="startPlay()">
+    <div id="myMain">
+        <nav class="navbar navbar-expand-lg navbar-dark ">
+            <div class="container-fluid">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="./index.html">Accueil</a></li>
+                    <li class="breadcrumb-item"><a href="./index_2.html">Sélection du niveau</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Jeu</li>
+                </ol>
+                <a class="navbar-brand" href="./index.html">
+                    <img src="images/burger-39x32.png" width="35" height="35" class="d-inline-block align-top" alt=""> Quizz
+                </a>
+            </div>
+        </nav>
+        <div id="global_container">
+            <div id="main_container">
+                <div id="question_picture">
+                    <img id="picture" alt="Mon image" />
+                </div>
+
+                <div class="levels_3">
+                    <div class="sous_level_3">
+                        <input type="radio" name="size" id="rep_1" style="margin-right: 20px">
+                        <label for="rep_1" id="rbAnswer1"> </label>
+                    </div>
+                </div>
+                <div class="levels_3">
+                    <div class="sous_level_3">
+                        <input type="radio" name="size" id="rep_2" style="margin-right: 20px">
+                        <label for="rep_2" id="rbAnswer2"> </label>
+                    </div>
+                </div>
+                <div class="levels_3">
+                    <div class="sous_level_3">
+                        <input type="radio" name="size" id="rep_3" style="margin-right: 20px">
+                        <label for="rep_3" id="rbAnswer3"> </label>
+                    </div>
+                </div>
+                <div class="levels_3">
+                    <div class="sous_level_3">
+                        <input type="radio" name="size" id="rep_4" style="margin-right: 20px">
+                        <label for="rep_4" id="rbAnswer4">  </label>
+                    </div>
+                </div>
+            </div>
+            <form name="Page3Form1" action="./index_2.html" method="GET">
+                <input id="idScoreP3" type="hidden" name="score-joueur" />
+            </form>
+            <div id="myProgress">
+                <div id="myBar">30s</div>
+            </div>
+        </div>
+    </div>
+    <script src="js/app.js "></script>
+</body>
+
+</html>

@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Nunito", sans-serif;
+    font-size: 1rem;
+}
+
+#myMain {
+    background-color: #072847;
+    min-height: 100vh;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar {
+    background-color: #051a2f;
+}
+
+body #global_container {
+    background-color: #072847;
+}
+
+body #main_container {
+    text-align: center;
+}
+
+#home_picture {
+    display: inline-block;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#home_start {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#home_rules {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.btn.btn-success {
+    color: white;
+    letter-spacing: 10px;
+    border-radius: 50px;
+}
+
+.btn.btn-danger {
+    color: white;
+    letter-spacing: 10px;
+    border-radius: 50px;
+}
+
+#txt_point {
+    color: white;
+    background-color: crimson;
+    border-radius: 20px;
+    width: 250px;
+    height: 30px;
+}
+
+.levels {
+    display: table;
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.levels .txt_level_1 {
+    color: white;
+    background-color: #061e36;
+    width: 380px;
+    border: 1px solid #3b546e;
+    text-align: left;
+    padding-left: 10px;
+}
+
+
+/* Page 3 le jeu*/
+
+.levels_3 {
+    display: table;
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.levels_3 .sous_level_3 {
+    background-color: #061e36;
+    width: 250px;
+    background: #4e4c4c;
+    border: 1px solid #FFF;
+    text-align: left;
+    padding-left: 15px;
+}
+
+.levels_3 label {
+    color: white;
+    text-align: left;
+}
+
+#question_picture img {
+    width: 300px;
+    height: 200px;
+    padding: 15px;
+}
+
+#myBar {
+    width: 100%;
+    height: 30px;
+    background-color: #c0505a;
+    text-align: center;
+    /* To center it horizontally (if you want) */
+    line-height: 30px;
+    /* To center it vertically */
+    color: white;
+}
