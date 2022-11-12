@@ -1,6 +1,6 @@
 {
     "name": "Image Quiz",
-    "short_name": "DevCoffee",
+    "short_name": "Quiz",
     "start_url": "/index.html",
     "display": "standalone",
     "background_color": "black",
