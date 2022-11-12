@@ -1,4 +1,4 @@
-const staticCacheName = "cache-v1";
+const nomDuCacheASauvegarder = "cache-v22";
 const assetsToSave = [
     "/",
     "/index.html",
@@ -6,7 +6,7 @@ const assetsToSave = [
     "/index_3.html",
     "/css/style.css",
     "/js/app.js",
-    "/js/callServiceWorker.js",
+    /*"/js/callServiceWorker.js",*/
     "/images/favicon/Bluetooth.ico",
     "/images/personnalites/actors/bruce_lee.jpg",
     "/images/personnalites/actors/guillaume_canet.jpg",
@@ -31,23 +31,39 @@ const assetsToSave = [
 
 // "install" est déclenché à la première ouverture de page
 self.addEventListener("install", installEvent => {
+    console.log(`/////////////////////// 0 Install : `);
+
     // .skipWaiting : dit au worker de s'installer avec sa nouvelle version immédiatement
+    // si elle existe (exemple: passage d'une v2 à v3)
     // pas d'attente d'install = on n'attend pas que le client réouvre la page pour utiliser la 
     // nouvelle version du worker
     self.skipWaiting();
 
-
     installEvent.waitUntil(
-        caches.open(staticCacheName).then(cache => {
-            cache.addAll(assetsToSave)
-        })
-    )
+            caches.open(nomDuCacheASauvegarder).then(cache => {
+                console.log(`/////////////////////// Ajout des fichier à télécharger dans le cache : ${nomDuCacheASauvegarder}`);
+                cache.addAll(assetsToSave)
+            })
+        )
+        /*
+           (async() => {
+            const keys = await caches.keys();
+            await Promise.all(
+                keys.map(key => {
+                    console.log(`/////////////////////// Suppression du cache : ${key}`);
+                    return caches.delete(key);
+                })
+            );
+        })();
+        */
 });
 
 // activate n'est pas redéclenché au rechargement
 self.addEventListener('activate', (event) => {
-    // .claims : dit au worker de controler la page immédiatement grâce au mode ACTIVATE
+
+    console.log(`----------------------- .claims : dit au worker de controler la page immédiatement grâce au mode ACTIVATE`);
     clients.claim();
+    console.log(`----------------------- Nom du cache utilisé par "active" : ${nomDuCacheASauvegarder}`);
 
     // On supprime les caches inutiles
     event.waitUntil(
@@ -55,7 +71,8 @@ self.addEventListener('activate', (event) => {
             const keys = await caches.keys();
             await Promise.all(
                 keys.map(key => {
-                    if (!key.includes(PREFIX)) {
+                    if (!key.includes(nomDuCacheASauvegarder)) {
+                        console.log(`----------------------- Suppression d'un cache non utilisés : ${key}`);
                         return caches.delete(key);
                     }
                 })
@@ -63,12 +80,11 @@ self.addEventListener('activate', (event) => {
         })()
 
     );
-    console.log(`+++++++++++++++ Nom du cache utilisé par "active" : ${staticCacheName}`);
 });
 
 // Fetch est déclenché au rechargement de la page
 self.addEventListener("fetch", fetchEvent => {
-    console.log(`+++++++++++++++ ${staticCacheName} Fetching : ${fetchEvent.request.url}, Mode : ${fetchEvent.request.mode}`);
+    console.log(`+++++++++++++++ ${nomDuCacheASauvegarder} Fetching : ${fetchEvent.request.url}, Mode : ${fetchEvent.request.mode}`);
 
     fetchEvent.respondWith(
         caches.match(fetchEvent.request).then(res => {

@@ -276,8 +276,12 @@ function updateScore() {
 
 function startPlay() {
 
-    /* Récupère le niveau sélectionné dans l'adresse du navigateur */
-    userLevel = location.search.substring(1).split("&")[0].split("=")[1];
+    // Récupère le niveau sélectionné dans la variable
+    // de session storage 
+    if (window.localStorage) {
+        // Sauvegarde en session storage
+        userLevel = window.sessionStorage.getItem('niveauDeJeuChoisie') ? window.sessionStorage.getItem('niveauDeJeuChoisie') : 1;
+    }
 
     /* Récupère la liste des questions en fonction du niveau */
     switch (userLevel) {
@@ -382,22 +386,21 @@ function partyEnded(_userScore) {
         window.sessionStorage.setItem('scoreJoueurSessionStorage', _userScore);
         // Sauvegarde en local storage
         window.localStorage.setItem('scoreJoueurLocalStorage', _userScore);
+
+        console.log(`**************** Fin de la partie`);
+
+        document.location.href = "./index_2.html";
     }
-
-    document.getElementById("idScoreP3").value = _userScore;
-    document.forms["Page3Form1"].submit();
 }
 
-function sendUserLevel1() {
-    document.forms["Page2Form1"].submit();
-}
+function sendUserLevel(lvl) {
 
-function sendUserLevel2() {
-    document.forms["Page2Form2"].submit();
-}
-
-function sendUserLevel3() {
-    document.forms["Page2Form3"].submit();
+    if (window.localStorage) {
+        // Sauvegarde en session storage
+        window.sessionStorage.setItem('niveauDeJeuChoisie', lvl);
+        // Sauvegarde en local storage
+        window.localStorage.setItem('niveauDeJeuChoisie', lvl);
+    }
 }
 
 function progressBar() {
@@ -407,6 +410,8 @@ function progressBar() {
 
     var elem = document.getElementById("myBar");
     var width = 100;
+    elem.style.width = width + '%';
+    elem.innerHTML = width / 10 + "s";
     var id = setInterval(frame, 1000);
 
     function frame() {
@@ -415,16 +420,20 @@ function progressBar() {
 
             if (killTimer == false) {
                 indexCurrentQuestion++;
-                if (indexCurrentQuestion < INDEX_QUESTION_MAX) {
+                console.log(`indexCurrentQuestion : ${indexCurrentQuestion}`);
+
+                if (indexCurrentQuestion < INDEX_QUESTION_MAX + 1) {
                     initPage3Component(indexCurrentQuestion);
+                } else {
+                    partyEnded(userScore);
                 }
             }
             killTimer = false;
 
         } else {
-            width -= 3.33;
+            width -= 10;
             elem.style.width = width + '%';
-            elem.innerHTML = (width / 3.3333).toFixed(0) + "s";
+            elem.innerHTML = width / 10 + "s";
         }
     }
 }
