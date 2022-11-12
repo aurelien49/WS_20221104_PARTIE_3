@@ -3,7 +3,7 @@
     "short_name": "Quiz",
     "start_url": "/index.html",
     "display": "standalone",
-    "background_color": "black",
+    "background_color": "yellow",
     "theme_color": "grey",
     "orientation": "portrait-primary",
     "description": "Application mobile pour la collecte de données sous forme d'un QCM. ",
