@@ -387,8 +387,6 @@ function partyEnded(_userScore) {
         // Sauvegarde en local storage
         window.localStorage.setItem('scoreJoueurLocalStorage', _userScore);
 
-        console.log(`**************** Fin de la partie`);
-
         document.location.href = "./index_2.html";
     }
 }
@@ -420,8 +418,6 @@ function progressBar() {
 
             if (killTimer == false) {
                 indexCurrentQuestion++;
-                console.log(`indexCurrentQuestion : ${indexCurrentQuestion}`);
-
                 if (indexCurrentQuestion < INDEX_QUESTION_MAX + 1) {
                     initPage3Component(indexCurrentQuestion);
                 } else {
