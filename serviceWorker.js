@@ -1,4 +1,4 @@
-const nomDuCacheASauvegarder = "cache-v24";
+const nomDuCacheASauvegarder = "cache-v25";
 const assetsToSave = [
     "/",
     "/index.html",
