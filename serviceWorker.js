@@ -1,4 +1,4 @@
-const nomDuCacheASauvegarder = "cache-v25";
+const nomDuCacheASauvegarder = "cache-v26";
 const assetsToSave = [
     "/",
     "/index.html",
@@ -29,7 +29,12 @@ const assetsToSave = [
     "https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css",
 ]
 
-// "install" est déclenché à la première ouverture de page
+/*  “install” : levé lorsque le navigateur installe le Service Worker 
+    L’événement d’installation se déclenche uniquement s’il y a eu un changement sur le fichier du service worker ou 
+    alors à chaque nouveau lancement de l’application.
+    Cet événement va s’occuper de toutes les actions qui sont nécessaires de faire au chargement de l’application, tel 
+    que mettre certains fichiers en cache.  
+*/
 self.addEventListener("install", installEvent => {
     console.log(`/////////////////////// 0 Install : `);
 
@@ -41,7 +46,7 @@ self.addEventListener("install", installEvent => {
 
     installEvent.waitUntil(
             caches.open(nomDuCacheASauvegarder).then(cache => {
-                console.log(`/////////////////////// Ajout des fichier à télécharger dans le cache : ${nomDuCacheASauvegarder}`);
+                console.log(`/////////////////////// Ajout des fichier à mettre dans le cache : ${nomDuCacheASauvegarder}`);
                 cache.addAll(assetsToSave)
             })
         )
@@ -58,7 +63,11 @@ self.addEventListener("install", installEvent => {
         */
 });
 
-// activate n'est pas redéclenché au rechargement
+/*  “activate”: levé lorsque le navigateur active la nouvelle version 
+    L’événement d’activation se déclenche une fois que l’événement d’installation est terminé.  
+    Cet  évènement  est  surtout  utile  pour  supprimer  tous  les  fichiers  qui  ne  sont  plus  nécessaires  ou  pour  nettoyer 
+    l’application. 
+*/
 self.addEventListener('activate', (event) => {
 
     console.log(`----------------------- .claims : dit au worker de controler la page immédiatement grâce au mode ACTIVATE`);
@@ -78,11 +87,13 @@ self.addEventListener('activate', (event) => {
                 })
             );
         })()
-
     );
 });
 
-// Fetch est déclenché au rechargement de la page
+/*  “fetch”: à chaque requête effectuée par le navigateur 
+    Un évènement fetch est également possible, il est déclenché lorsqu’une requête HTTP est émise par l’application.
+    permet d'intercepter des requêtes et d'y répondre de façon personnalisée. 
+*/
 self.addEventListener("fetch", fetchEvent => {
     console.log(`+++++++++++++++ ${nomDuCacheASauvegarder} Fetching : ${fetchEvent.request.url}, Mode : ${fetchEvent.request.mode}`);
 
@@ -91,4 +102,9 @@ self.addEventListener("fetch", fetchEvent => {
             return res || fetch(fetchEvent.request)
         })
     )
+});
+
+// “push”: lors de la réception de notifications push 
+self.addEventListener("push", pushEvent => {
+    console.log(`************** pushEvent : ${pushEvent}`);
 });
