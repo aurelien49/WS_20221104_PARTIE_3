@@ -4,7 +4,7 @@ if ("serviceWorker" in navigator) {
             console.log(`Enregistrement du service worker réussi`);
 
         }).catch((error) => {
-            console.log(`Erreur : `); +
-            error
+            console.log(`Erreur : ${error}`);
+
         });
 }
